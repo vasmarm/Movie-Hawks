@@ -2,7 +2,7 @@
     text-align: center;
     margin-top: 20px;
     margin-left: 650px;
-    content: url("./Images/Movie_Magic_1995.png");
+    content: url("../Images/Movie_Magic_1995.png");
     align-content: center;
 
 }
@@ -14,4 +14,9 @@
     margin-top: 50px;
     margin-left: 30px;
 }
-
+.sizing{
+    width:187px;
+}
+#submit{
+    width:230px;
+}
