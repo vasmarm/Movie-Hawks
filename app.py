@@ -21,9 +21,10 @@ app = Flask(__name__)
 def dataFetch():
     data = []
     """Return a list of sample names."""
-    con = mysql.connector.connect(user='root', password='admin',
+    con = mysql.connector.connect(user='root', password='sleepingmonkey',
                                     host='127.0.0.1',
-                                    database='movie_magic_db')
+                                    database='movie_magic_db',
+                                    auth_plugin='mysql_native_password')
     c = con.cursor()
 
     # c.execute("""SELECT budget, original_title, popularity, revenue, vote_average, vote_count FROM tmdb_5000_movies order by budget""")
