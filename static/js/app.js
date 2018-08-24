@@ -1,26 +1,12 @@
+
 var movies = [];
 
-// Grab a reference to the dropdown select element
-// var title = [];
-// var director = [];
-// var year = [];
-// var actor = [];
-// var ratings = [];
 var genreDisplay = ['Crime', 'Action', 'Adventure', 'Thriller', 'Fantasy', 'Family', 'Science                           Fiction', 'Horror', 'Drama', 'Romance', 'Comedy', 'Animation', 'Mystery',                         'Music', 'Western', 'War', 'Foreign', 'History', 'Documentary'];
 var monthDisplay = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',                                            'Sep', 'Oct', 'Nov', 'Dec'];
-// var production = [];
-// var awards = [];
-// var rated = [];
-// var releaseDate = [];
-// var roi = [];
-// var genre = [];
-// var month = [];
-// var budget = [];
-// var revenue = [];
 /*
  * Initialize Function Defination
  */
-function initialize(){
+var initialize = function(){
     
     url = "http://www.omdbapi.com/?apikey=e6767b7c&t="
     // Use the list of sample names to populate the select options
@@ -138,8 +124,122 @@ function printData(){
     console.log("--------------"); 
 }
 
+/*
+ * Code To Navigate Between The Tabs
+ *
+*/
+$(document).ready(function(){
 
-$(".director-dropdown").on('click', 'li a', function(){
-    $(this).parent().parent().siblings(".btn:first-child").html($(this).text()+' <span class="caret"></span>');
-    $(this).parent().parent().siblings(".btn:first-child").val($(this).text());
+    $("#trending-graph").show();
+    $("#ratings-graph").hide();
+    $("#genre-graph").hide();
+    $("#financial-graph").hide();
+
+    $("#trending").css("font-weight", "bold");
+    $("#trending").css("color", "red");
+    $("#ratings").css("color", "blue");
+    $("#financial").css("color", "blue");
+    $("#genre").css("color", "blue");
+    
+    $("#trending").css({"font-size": "20px"});
+
+    $(".modal").show();
+
+    
+
+    $("#financial").click(function() {
+        $("#trending-graph").hide();
+        $("#ratings-graph").hide();
+        $("#genre-graph").hide();
+        $("#financial-graph").show();
+        $("#financial").css("font-weight", "bold");
+        $("#trending").css("font-weight", "normal");
+        $("#ratings").css("font-weight", "normal");
+        $("#genre").css("font-weight", "normal");
+        $("#financial").css("color", "red");
+        $("#trending").css("color", "blue");
+        $("#ratings").css("color", "blue");
+        $("#genre").css("color", "blue");
+
+        $("#financial").css({"font-size": "20px"});
+        $("#trending").css({"font-size": "16px"});
+        $("#genre").css({"font-size": "16px"});
+        $("#ratings").css({"font-size": "16px"});
+    });
+
+    $("#ratings").click(function() {
+        $("#trending-graph").hide();
+        $("#financial-graph").hide();
+        $("#genre-graph").hide();
+        $("#ratings-graph").show();
+
+        $("#ratings").css("font-weight", "bold");
+        $("#trending").css("font-weight", "normal");
+        $("#financial").css("font-weight", "normal");
+        $("#genre").css("font-weight", "normal");
+
+        $("#ratings").css("color", "red");
+        $("#trending").css("color", "blue");
+        $("#financial").css("color", "blue");
+        $("#genre").css("color", "blue");
+
+        $("#ratings").css({"font-size": "20px"});
+        $("#trending").css({"font-size": "16px"});
+        $("#genre").css({"font-size": "16px"});
+        $("#financial").css({"font-size": "16px"});
+    });
+
+    $("#trending").click(function() {
+        $("#genre-graph").hide();
+        $("#financial-graph").hide();
+        $("#ratings-graph").hide();
+        $("#trending-graph").show();
+
+        $("#trending").css("font-weight", "bold");
+        $("#genre").css("font-weight", "normal");
+        $("#financial").css("font-weight", "normal");
+        $("#ratings").css("font-weight", "normal");
+
+        $("#trending").css("color", "red");
+        $("#genre").css("color", "blue");
+        $("#financial").css("color", "blue");
+        $("#ratings").css("color", "blue");
+
+        $("#trending").css({"font-size": "20px"});
+        $("#financial").css({"font-size": "16px"});
+        $("#genre").css({"font-size": "16px"});
+        $("#ratings").css({"font-size": "16px"});
+    });
+
+    $("#genre").click(function() {
+        $("#trending-graph").hide();
+        $("#financial-graph").hide();
+        $("#ratings-graph").hide();
+        $("#genre-graph").show();
+
+        $("#genre").css("font-weight", "bold");
+        $("#trending").css("font-weight", "normal");
+        $("#financial").css("font-weight", "normal");
+        $("#ratings").css("font-weight", "normal");
+
+        $("#genre").css("color", "red");
+        $("#trending").css("color", "blue");
+        $("#financial").css("color", "blue");
+        $("#ratings").css("color", "blue");
+
+        $("#genre").css({"font-size": "20px"});
+        $("#trending").css({"font-size": "16px"});
+        $("#financial").css({"font-size": "16px"});
+        $("#ratings").css({"font-size": "16px"});
+    });
+});
+
+
+  $(function(){
+    $("#year-dropdown li a").click(function(){
+      $(".btn:first-child").text($(this).text());
+      $(".btn:first-child").val($(this).text());
+
+   });
+
 });
