@@ -1,8 +1,9 @@
 
 var movies = [];
-
+var actorArr = [];
 var genreDisplay = ['Crime', 'Action', 'Adventure', 'Thriller', 'Fantasy', 'Family', 'Science                           Fiction', 'Horror', 'Drama', 'Romance', 'Comedy', 'Animation', 'Mystery',                         'Music', 'Western', 'War', 'Foreign', 'History', 'Documentary'];
 var monthDisplay = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',                                            'Sep', 'Oct', 'Nov', 'Dec'];
+var selectedYear, selectedMonth, selectedGenre, selectedDirector, selectedActor;
 /*
  * Initialize Function Defination
  */
@@ -37,10 +38,12 @@ var initialize = function(){
                 .finally(function() { 
                     try{
                         if (movies.map(d => d.director).length === respLength) {
+                            getActorList();
                             fillYearDropdown();
                             fillMonthDropdown();
                             fillGenreDropdown();
                             fillDirectorDropdown();
+                            fillActorDropdown();
                         }
                         // printData(); 
                     }
@@ -112,6 +115,20 @@ function fillDirectorDropdown(){
         div.appendChild(el);
     }
 }
+
+function fillActorDropdown(){
+
+    var div = document.getElementById("actor-dropdown");
+    for(var i = 0; i < actorArr.length; i++) {
+        var opt = actorArr[i];
+        var el = document.createElement("option");
+        el.textContent = opt;
+        el.value = opt;
+        el.className = "dropdown-item";
+        div.appendChild(el);
+    }
+}
+
 function printData(){
     console.log(director);
     console.log(year);
@@ -122,6 +139,25 @@ function printData(){
     console.log(rated);
     console.log(roi);
     console.log("--------------"); 
+}
+
+/*
+ * Putting All the Actors in a single list
+ *
+*/
+function getActorList(){
+    var slicedActor;
+    var tempActorArray = [];
+    var tempActorNames = [];
+    movies.forEach((result) => {
+        var tempActorString = result.actor;
+        slicedActor = tempActorString.split(",");
+        tempActorArray.push(slicedActor);
+    });
+    tempActorNames = tempActorArray.reduce((acc, val) => acc.concat(val), []);
+    $.each(tempActorNames, function(i, el){
+        if($.inArray(el, actorArr) === -1) actorArr.push(el);
+});
 }
 
 /*
@@ -232,14 +268,27 @@ $(document).ready(function(){
         $("#financial").css({"font-size": "16px"});
         $("#ratings").css({"font-size": "16px"});
     });
-});
 
+    $("#submit").click(function() {
+        var year = document.getElementById("year-dropdown");
+        selectedYear = year.options[year.selectedIndex].value;
 
-  $(function(){
-    $("#year-dropdown li a").click(function(){
-      $(".btn:first-child").text($(this).text());
-      $(".btn:first-child").val($(this).text());
+        var month = document.getElementById("month-dropdown");
+        selectedMonth = month.options[month.selectedIndex].value;
 
-   });
+        var genre = document.getElementById("genre-dropdown");
+        selectedGenre = genre.options[genre.selectedIndex].value;
 
+        var director = document.getElementById("director-dropdown");
+        selectedDirector = director.options[director.selectedIndex].value;
+
+        var actor = document.getElementById("actor-dropdown");
+        selectedActor = actor.options[actor.selectedIndex].value;
+
+        console.log(selectedYear);
+        console.log(selectedMonth);
+        console.log(selectedGenre);
+        console.log(selectedDirector);
+        console.log(selectedActor);
+    });
 });
