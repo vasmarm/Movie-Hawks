@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
 
-
     <!-- Local CSS -->
     <link rel="stylesheet" href="{{ url_for("static", filename="css/styles.css")}}">
     
@@ -35,48 +34,58 @@
     <div class="row">
         <div class="col-xs-6 col-md-2">
             <div class="search-area">
-                    <form> 
-            <div class="btn-group">
-                    <button type="button" class="btn btn-danger dropdown-toggle sizing" id="year" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="far fa-calendar"></i> Year <i class="far fa-calendar"></i>
-                    </button>
-                    <div class="dropdown-menu" id="year-dropdown">
-                        <h6 class="dropdown-header">SELECT YEAR</h6>
+            <form> 
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend sizing">
+                        <button class="btn btn-danger sizing " type="button"><i class="far fa-calendar"></i> Year</button>
                     </div>
-            </div>
-            <hr>
-        
-            <div class="btn-group">
-                    <button type="button" class="btn btn-secondary dropdown-toggle sizing" id="month" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="far fa-calendar-alt"></i> Month <i class="far fa-calendar-alt"></i>
-                    </button>
-                    <div class="dropdown-menu" id="month-dropdown">
-                        <h6 class="dropdown-header">SELECT MONTH</h6>
+                    <select class="custom-select" id="year-dropdown">
+                      <option selected>SELECT YEAR</option>
+                    </select>
+                  </div>
+            
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend sizing">
+                        <button class="btn btn-secondary sizing" type="button"><i class="far fa-calendar-alt"></i> Month</button>
                     </div>
-            </div>
-            <hr> 
-            <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle sizing" id="genre" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-cogs"></i> Genre <i class="fas fa-cogs"></i>
-                    </button>
-                    <div class="dropdown-menu" id="genre-dropdown">
-                        <h6 class="dropdown-header">SELECT GENRE</h6>
+                    <select class="custom-select" id="month-dropdown">
+                      <option selected>SELECT MONTH</option>
+                    </select>
+                  </div>
+             
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend sizing">
+                        <div class="input-group-prepend sizing">
+                            <button class="btn btn-info sizing" type="button"><i class="fas fa-cogs"></i> Genre</button>
+                        </div>
                     </div>
-            </div>
-            <hr> 
-            <input type="text" class="form-control sizing" id="actor" placeholder="Actor Name">
-            <hr>
-            <div class="btn-group">
-                    <button type="button" class="btn btn-warning dropdown-toggle sizing" id="director" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-hands"></i> Director <i class="fas fa-hands"></i>
-                    </button>
-                    <div class="dropdown-menu" id="director-dropdown">
-                        <h6 class="dropdown-header">SELECT DIRECTOR</h6>
+                    <select class="custom-select" id="genre-dropdown">
+                      <option selected>SELECT GENRE</option>
+                    </select>
+                  </div>
+             
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend sizing">
+                        <button class="btn btn-warning sizing" type="button"><i class="fas fa-hands"></i> Director</button>
                     </div>
-            </div>
+                    <select class="custom-select" id="director-dropdown">
+                      <option selected>SELECT DIRECTOR</option>
+                    </select>
+                  </div> 
+             
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend sizing">
+                        <button class="btn btn-success sizing" type="button"><i class="fas fa-street-view"></i> Actor</button>
+                    </div>
+                    <select class="custom-select" id="actor-dropdown">
+                      <option selected>SELECT ACTOR</option>
+                    </select>
+                  </div> 
+              
+            
             <hr>
                     <input class="btn btn-primary" id="submit" type="submit" value="Generate Graphs"> 
-                </form>
+            </form>
             </div>
         </div>
         <!-- Graph  Area-->
@@ -129,8 +138,13 @@
 <!-- Footer -->
 
     <!--  JavaScript -->
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <script src="../static/js/app.js"></script>
     <script src="../static/js/trending.js"></script>
+
+    
   </body>
 </html>
