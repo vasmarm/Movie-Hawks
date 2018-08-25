@@ -359,7 +359,7 @@ $(document).ready(function(){
 
 function filter() {
     movies_filtered = [];
-    movies_filtered.push(movies.filter(movies => movies.year.includes(selectedYear) && movies.month.includes(selectedMonth) && movies.genre.includes(selectedGenre) && movies.director.includes(selectedDirector)))
+    movies_filtered.push(movies.filter(movies => movies.year.includes(selectedYear) && movies.actor.includes(selectedActor) && movies.month.includes(selectedMonth) && movies.genre.includes(selectedGenre) && movies.director.includes(selectedDirector)))
 }
 
 function format() {
