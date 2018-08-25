@@ -447,7 +447,7 @@ function trending() {
             barmode: 'group',
             title: 'Ratings by Website',
             height: 800,
-            width: 1400,
+            width: 1000,
             xaxis: {
             tickangle: -25
             },
