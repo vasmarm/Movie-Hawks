@@ -29,7 +29,7 @@ def dataFetch():
 
     # c.execute("""SELECT budget, original_title, popularity, revenue, vote_average, vote_count FROM tmdb_5000_movies order by budget""")
 
-    c.execute("""SELECT * FROM tmdb_5000_movies where budget <> 0 and revenue <>0 LIMIT 5""")
+    c.execute("""SELECT * FROM tmdb_5000_movies where budget <> 0 and revenue <>0 LIMIT 100""")
     for row in c:
         d = {
             'budget': row[0],

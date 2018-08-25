@@ -6,7 +6,6 @@ var monthDisplay = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',     
 var selectedYear, selectedMonth, selectedGenre, selectedDirector, selectedActor;
 
 var movies_filtered = [];
-var movies_trending = []
 
 var actors = []
 var awards = []
@@ -340,7 +339,7 @@ $(document).ready(function(){
         console.log(selectedActor);
 
         
-        
+        empty();
         filter();
         format();
         separate_ratings();
@@ -381,11 +380,24 @@ function format() {
 }
 
 function separate_ratings() {
+    
     for (i = 0; i < ratings.length; i++) {
-        imdb_scores.push(parseFloat(ratings[i][0].Value))
-        rotten_scores.push(parseFloat(ratings[i][1].Value))
-        meta_scores.push(parseFloat(ratings[i][2].Value))
-    };};
+        if (ratings[i][0].Value && ratings[i][1] && ratings[i][2]){
+            imdb_scores.push(parseFloat(ratings[i][0].Value))
+            rotten_scores.push(parseFloat(ratings[i][1].Value))
+            meta_scores.push(parseFloat(ratings[i][2].Value))
+        }
+        else if (ratings[i].length < 3) { 
+            imdb_scores.push(0)
+            rotten_scores.push(0)
+            meta_scores.push(0)
+            console.log("UNDEFINED")
+        }
+    
+        
+    }
+}
+
 
 function extract_awards() {
     for (var i = 0; i < awards.length; i++) {
@@ -434,14 +446,15 @@ function trending() {
         var layout = {
             barmode: 'group',
             title: 'Ratings by Website',
-            height: 600,
-            width: 800,
+            height: 800,
+            width: 1400,
             xaxis: {
             tickangle: -25
             },
             yaxis: {
                 title: "Viewer Rating"
-            }
+            },
+            
         };
     
         // plot
@@ -466,17 +479,37 @@ function threed_scatter() {
             color: 'black',
             width: 0.5
         },
-            opacity: 0.8},
-        type: 'scatter3d'
+        opacity: 0.8},
+        type: 'scatter3d',
     };
     
 
     var layout = {
-        scene: {
-            xaxis:{title: 'Viewer Rating'},
-            yaxis:{title: 'Return on Investment'},
-            zaxis:{title: 'Number of Awards and Nominations'},
-            },
+        scene:{
+            xaxis: {
+             backgroundcolor: "rgb(200, 200, 230)",
+             gridcolor: "rgb(255, 255, 255)",
+             showbackground: true,
+             zerolinecolor: "rgb(255, 255, 255)",
+             title: 'Viewer Rating'
+            }, 
+            yaxis: {
+             backgroundcolor: "rgb(230, 200,230)",
+             gridcolor: "rgb(255, 255, 255)",
+             showbackground: true,
+             zerolinecolor: "rgb(255, 255, 255)",
+             title: 'Return on Investment',
+             
+            }, 
+            zaxis: {
+             backgroundcolor: "rgb(230, 230,200)",
+             gridcolor: "rgb(255, 255, 255)",
+             showbackground: true,
+             zerolinecolor: "rgb(255, 255, 255)",
+             title: 'Number of Awards and Nominations'
+            }},
+        height: 800,
+        width: 1000,
         autosize: true,
         tickangle: -95,
         margin: {
@@ -512,16 +545,43 @@ function bubble() {
       var data = [trace1];
       
       var layout = {
-        title: 'Revenue vs Budget',
+        title: 'Revenue vs Budget \n Bubble Size = Average Viewer Rating',
         showlegend: false,
-        height: 600,
-        width: 800,
+        height: 800,
+        width: 1000,
         yaxis: {
             title: "Viewer Rating"
         },
         xaxis: {title: "Budget"},
-        yaxis: {title: "Revenue"}
+        yaxis: {title: "Revenue"},
+        backgroundcolor: "black"
       };
       
       Plotly.newPlot('financial-graph', data, layout);
 }
+
+function empty() {
+    
+movies_filtered.length = 0;
+
+actors.length = 0;
+awards.length = 0;
+
+budgets.length = 0;
+directors.length = 0;
+ genres.length = 0
+ months.length = 0
+ ratings.length = 0
+ releaseDates.length = 0
+ revenues.length = 0
+ rois.length = 0
+ titles.length = 0
+ years.length = 0
+
+ imdb_scores.length = 0
+ rotten_scores.length = 0
+ meta_scores.length = 0
+
+ number_awards.length = 0
+
+};
