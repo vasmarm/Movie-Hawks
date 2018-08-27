@@ -24,5 +24,4 @@ traitlets==4.3.2
 wcwidth==0.1.7
 Werkzeug==0.12.2
 gunicorn==19.7.1
-mysql-connector-python==2.2.2
-
+mysql-connector-python-rf == 2.2.2
