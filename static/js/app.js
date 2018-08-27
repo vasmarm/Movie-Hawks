@@ -31,7 +31,7 @@ var number_awards = []
  */
 var initialize = function(){
     
-    url = "http://www.omdbapi.com/?apikey=e6767b7c&t="
+    url = "https://www.omdbapi.com/?apikey=e6767b7c&t="
     // Use the list of sample names to populate the select options
     d3.json("/data").then(response => {
         var respLength = response.length;
