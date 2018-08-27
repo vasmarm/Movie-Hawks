@@ -3,7 +3,7 @@ import os
 
 import pymysql
 pymysql.install_as_MySQLdb()
-# import mysql.connector 
+import mysql.connector 
 
 from flask import Flask, jsonify, render_template
 from mysql.connector import errorcode
